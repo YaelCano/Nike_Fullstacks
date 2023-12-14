@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
 using AutoMapper;
+using Core.Interfaces;
 using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ public class Carrito_ComprasController: BaseController
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Carrito_Compras>>> Get()
         {
-            var entidades = await _unitOfWork.Carrito_Comprass.GetAllAsync();
+            var entidades = await _unitOfWork.Carrito_Compras.GetAllAsync();
             return _mapper.Map<List<Carrito_Compras>>(entidades);
         }
 
@@ -35,7 +36,7 @@ public class Carrito_ComprasController: BaseController
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Carrito_ComprasDto>> Get(int id)
         {
-            var entidad = await _unitOfWork.Carrito_Comprass.GetByIdAsync(id);
+            var entidad = await _unitOfWork.Carrito_Compras.GetByIdAsync(id);
             if(entidad == null)
             {
                 return NotFound();
@@ -49,7 +50,7 @@ public class Carrito_ComprasController: BaseController
         public async Task<ActionResult<Carrito_Compras>> Post(Carrito_ComprasDto Carrito_ComprasDto)
         {
             var entidad = _mapper.Map<Carrito_Compras>(Carrito_ComprasDto);
-            this._unitOfWork.Carrito_Comprass.Add(entidad);
+            this._unitOfWork.Carrito_Compras.Add(entidad);
             await _unitOfWork.SaveAsync();
             if(entidad == null)
             {
@@ -70,7 +71,7 @@ public class Carrito_ComprasController: BaseController
                 return NotFound();
             }
             var entidades = _mapper.Map<Carrito_Compras>(Carrito_ComprasDto);
-            _unitOfWork.Carrito_Comprass.Update(entidades);
+            _unitOfWork.Carrito_Compras.Update(entidades);
             await _unitOfWork.SaveAsync();
             return Carrito_ComprasDto;
         }
@@ -80,12 +81,12 @@ public class Carrito_ComprasController: BaseController
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
-            var entidad = await _unitOfWork.Carrito_Comprass.GetByIdAsync(id);
+            var entidad = await _unitOfWork.Carrito_Compras.GetByIdAsync(id);
             if(entidad == null)
             {
                 return NotFound();
             }
-            _unitOfWork.Carrito_Comprass.Delete(entidad);
+            _unitOfWork.Carrito_Compras.Delete(entidad);
             await _unitOfWork.SaveAsync();
             return NoContent();
         }
