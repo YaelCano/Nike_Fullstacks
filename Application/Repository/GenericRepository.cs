@@ -9,7 +9,7 @@ using Persistence.Data;
 
 namespace Api.Repository
 {
-    public class GenericRepository<T> : IGeneric<T> where T : BaseEntity
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly Nike_FullstacksContext _context;
 

@@ -7,7 +7,7 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 { 
-    public interface IUsuarioRoles:IGeneric<UsuarioRoles> 
+    public interface IUsuarioRoles:IGenericRepository<UsuarioRoles> 
     {
 
     }

@@ -26,7 +26,7 @@ public class RolController: BaseController
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Rol>>> Get()
         {
-            var entidades = await _unitOfWork.Rols.GetAllAsync();
+            var entidades = await _unitOfWork.Roles.GetAllAsync();
             return _mapper.Map<List<Rol>>(entidades);
         }
 
@@ -36,7 +36,7 @@ public class RolController: BaseController
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<RolDto>> Get(int id)
         {
-            var entidad = await _unitOfWork.Rols.GetByIdAsync(id);
+            var entidad = await _unitOfWork.Roles.GetByIdAsync(id);
             if(entidad == null)
             {
                 return NotFound();

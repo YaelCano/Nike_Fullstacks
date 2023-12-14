@@ -11,7 +11,7 @@ namespace Domain.Entities
         public string Username {get; set;}
         public string Email {get; set;}
         public string  Password {get; set;}
-        public ICollection<Rol> Rols {get; set;}
+        public ICollection<Rol> Roles {get; set;}
         public ICollection<UsuarioRoles> UsuarioRoles {get; set;}
         public ICollection<RefreshToken> RefreshTokens {get; set;}
     }

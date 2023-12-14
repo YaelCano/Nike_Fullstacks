@@ -6,7 +6,7 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 { 
-    public interface IGeneric<T> where T : BaseEntity
+    public interface IGenericRepository<T> where T : BaseEntity
     {
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();

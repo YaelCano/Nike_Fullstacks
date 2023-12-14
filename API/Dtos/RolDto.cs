@@ -6,5 +6,6 @@ using System.Threading.Tasks;
 namespace API.Dtos; 
     public class RolDto : BaseDto
     { 
-
+        public int Id { get; set; }
+        public string ? Nombre { get; set; }
     } 

@@ -7,7 +7,7 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 { 
-    public interface ICarrito_Compras:IGeneric<Carrito_Compras> 
+    public interface ICarrito_Compras:IGenericRepository<Carrito_Compras> 
     {
 
     }

@@ -7,7 +7,7 @@ using Domain.Entities;
 
 namespace Domain.Interfaces
 { 
-    public interface IClienteCompra:IGeneric<ClienteCompra> 
+    public interface IClienteCompra:IGenericRepository<ClienteCompra> 
     {
 
     }

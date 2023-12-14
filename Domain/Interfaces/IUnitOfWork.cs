@@ -11,14 +11,14 @@ namespace Core.Interfaces
         ICarrito_Compras Carrito_Compras  { get; }
         ICategoria_Producto Categoria_Productos {get;}
         IClienteCompra ClienteCompras {get;}
-        IClientes Clientess {get;}
+        IClientes Clientes {get;}
         ICompra Compras {get;}
         IDetalle_Producto Detalle_Productos {get;}
         IPago Pagos {get;}
         IProducto Productos  {get;}
         IRol Roles  {get;}
         IUsuario Usuarios  {get;}
-        IUsuarioRoles UsuarioRoless  {get;}
+        IUsuarioRoles UsuarioRoles  {get;}
 
         Task<int> SaveAsync();
     }

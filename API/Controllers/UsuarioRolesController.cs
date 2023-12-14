@@ -26,7 +26,7 @@ public class UsuarioRolesController: BaseController
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<UsuarioRoles>>> Get()
         {
-            var entidades = await _unitOfWork.UsuarioRoless.GetAllAsync();
+            var entidades = await _unitOfWork.UsuarioRoles.GetAllAsync();
             return _mapper.Map<List<UsuarioRoles>>(entidades);
         }
 
@@ -36,7 +36,7 @@ public class UsuarioRolesController: BaseController
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UsuarioRolesDto>> Get(int id)
         {
-            var entidad = await _unitOfWork.UsuarioRoless.GetByIdAsync(id);
+            var entidad = await _unitOfWork.UsuarioRoles.GetByIdAsync(id);
             if(entidad == null)
             {
                 return NotFound();
@@ -50,7 +50,7 @@ public class UsuarioRolesController: BaseController
         public async Task<ActionResult<UsuarioRoles>> Post(UsuarioRolesDto UsuarioRolesDto)
         {
             var entidad = _mapper.Map<UsuarioRoles>(UsuarioRolesDto);
-            this._unitOfWork.UsuarioRoless.Add(entidad);
+            this._unitOfWork.UsuarioRoles.Add(entidad);
             await _unitOfWork.SaveAsync();
             if(entidad == null)
             {
@@ -71,7 +71,7 @@ public class UsuarioRolesController: BaseController
                 return NotFound();
             }
             var entidades = _mapper.Map<UsuarioRoles>(UsuarioRolesDto);
-            _unitOfWork.UsuarioRoless.Update(entidades);
+            _unitOfWork.UsuarioRoles.Update(entidades);
             await _unitOfWork.SaveAsync();
             return UsuarioRolesDto;
         }
@@ -81,12 +81,12 @@ public class UsuarioRolesController: BaseController
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
-            var entidad = await _unitOfWork.UsuarioRoless.GetByIdAsync(id);
+            var entidad = await _unitOfWork.UsuarioRoles.GetByIdAsync(id);
             if(entidad == null)
             {
                 return NotFound();
             }
-            _unitOfWork.UsuarioRoless.Delete(entidad);
+            _unitOfWork.UsuarioRoles.Delete(entidad);
             await _unitOfWork.SaveAsync();
             return NoContent();
         }

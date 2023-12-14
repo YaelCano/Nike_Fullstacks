@@ -26,7 +26,7 @@ public class ClientesController: BaseController
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<IEnumerable<Clientes>>> Get()
         {
-            var entidades = await _unitOfWork.Clientess.GetAllAsync();
+            var entidades = await _unitOfWork.Clientes.GetAllAsync();
             return _mapper.Map<List<Clientes>>(entidades);
         }
 
@@ -36,7 +36,7 @@ public class ClientesController: BaseController
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ClientesDto>> Get(int id)
         {
-            var entidad = await _unitOfWork.Clientess.GetByIdAsync(id);
+            var entidad = await _unitOfWork.Clientes.GetByIdAsync(id);
             if(entidad == null)
             {
                 return NotFound();
@@ -50,7 +50,7 @@ public class ClientesController: BaseController
         public async Task<ActionResult<Clientes>> Post(ClientesDto ClientesDto)
         {
             var entidad = _mapper.Map<Clientes>(ClientesDto);
-            this._unitOfWork.Clientess.Add(entidad);
+            this._unitOfWork.Clientes.Add(entidad);
             await _unitOfWork.SaveAsync();
             if(entidad == null)
             {
@@ -71,7 +71,7 @@ public class ClientesController: BaseController
                 return NotFound();
             }
             var entidades = _mapper.Map<Clientes>(ClientesDto);
-            _unitOfWork.Clientess.Update(entidades);
+            _unitOfWork.Clientes.Update(entidades);
             await _unitOfWork.SaveAsync();
             return ClientesDto;
         }
@@ -81,12 +81,12 @@ public class ClientesController: BaseController
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
-            var entidad = await _unitOfWork.Clientess.GetByIdAsync(id);
+            var entidad = await _unitOfWork.Clientes.GetByIdAsync(id);
             if(entidad == null)
             {
                 return NotFound();
             }
-            _unitOfWork.Clientess.Delete(entidad);
+            _unitOfWork.Clientes.Delete(entidad);
             await _unitOfWork.SaveAsync();
             return NoContent();
         }
